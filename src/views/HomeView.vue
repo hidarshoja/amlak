@@ -62,7 +62,7 @@ export default {
           class="col-xl-5 col-lg-6 col-md-7 order-md-1 pt-xl-5 pe-lg-0 mb-3 text-md-start text-center"
         >
           <h1 class="display-4 mt-lg-5 mb-md-4 mb-3 pt-md-4 pb-lg-2">
-            نرخ ارزان خانه <br />
+            نرخ ارزان ترین خانه <br />
             در مکان دلخواه شما
           </h1>
           <p class="position-relative lead ms-lg-n5 fs-6">
