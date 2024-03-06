@@ -43,7 +43,7 @@
           :style="'background-image: url(' + item.imageUrl + ')'"
         >
           <div class="position-absolute start-0 top-0 pt-3 ps-3">
-            <span  :class="{'bg-info': item.status === 'جدید', 'bg-success': item.status === 'تایید'}">{{ item.status }}</span>
+            <span style="border-radius: 8px; padding: 3px; font-size: 12px;"  :class="{'bg-info': item.status === 'جدید', 'bg-success': item.status === 'تایید'}">{{ item.status }}</span>
           </div></a
         >
         <div class="card-body position-relative pb-3">
@@ -181,9 +181,10 @@
           <div
             class="d-flex align-items-center justify-content-center justify-content-sm-start border-top pt-3 pb-2 mt-3 text-nowrap"
           >
-            <span class="d-inline-block me-4 fs-sm"
+            <!-- <span class="d-inline-block me-4 fs-sm"
               >{{ item.sleep}}<i class="fi-bed ms-1 mt-n1 fs-lg text-muted"></i></span
-            ><span class="d-inline-block me-4 fs-sm"
+            > -->
+            <span class="d-inline-block me-4 fs-sm"
               >{{ item.room}}<i class="fi-bath ms-1 mt-n1 fs-lg text-muted"></i></span
             ><span class="d-inline-block fs-sm"
               >{{ item.Parking }}<i class="fi-car ms-1 mt-n1 fs-lg text-muted"></i

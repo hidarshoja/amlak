@@ -215,7 +215,8 @@
               class="swap-to"
               src="/real-estate/brands/01_color.svg"
               alt="Logo"
-              width="196" /><img
+              width="196" />
+              <img
               class="swap-from"
               src="/real-estate/brands/01_gray.svg"
               alt="Logo"
@@ -228,7 +229,8 @@
               class="swap-to"
               src="/real-estate/brands/02_color.svg"
               alt="Logo"
-              width="196" /><img
+              width="196" />
+              <img
               class="swap-from"
               src="/real-estate/brands/02_gray.svg"
               alt="Logo"
@@ -311,11 +313,7 @@
               در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
               نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
             </p>
-            <a
-              class="btn btn-lg btn-primary"
-              href="#"
-              ><i class="fi-search me-2"></i>ملک خود را پیدا کن!</a
-            >
+          
           </div>
           <div class="col-4 d-md-block d-none align-self-end px-0">
             <img

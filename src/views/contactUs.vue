@@ -31,10 +31,15 @@
         <div class="col-md-6 offset-lg-1">
           <div class="card border-0 bg-secondary p-sm-3 p-2">
             <div class="card-body m-1">
-              <form class="needs-validation" novalidate>
+              <form
+                class="needs-validation"
+                @submit.prevent="submitForm"
+                novalidate
+              >
                 <div class="mb-4">
                   <label class="form-label" for="c-name">نام خانوادگی</label>
                   <input
+                    v-model="formData.name"
                     class="form-control form-control-lg"
                     id="c-name"
                     type="text"
@@ -47,6 +52,7 @@
                 <div class="mb-4">
                   <label class="form-label" for="c-email">پست الکترونیکی</label>
                   <input
+                    v-model="formData.email"
                     class="form-control form-control-lg"
                     id="c-email"
                     type="email"
@@ -57,6 +63,7 @@
                 <div class="mb-4">
                   <label class="form-label" for="c-message">متن درخواست</label>
                   <textarea
+                    v-model="formData.message"
                     class="form-control form-control-lg"
                     id="c-message"
                     rows="4"
@@ -84,60 +91,91 @@
     <!-- Contact cards-->
     <section class="container mb-5 pb-2 pb-md-4 pb-lg-5">
       <div class="row g-4">
-        <!-- Item-->
-        <div class="col-md-4">
-          <a
-            class="icon-box card card-hover h-100"
-            href="mailto:example@email.com"
-          >
+        <div class="col-md-4" v-for="(item, index) in items" :key="index">
+          <a class="icon-box card card-hover h-100" :href="item.link">
             <div class="card-body">
               <div
                 class="icon-box-media text-primary rounded-circle shadow-sm mb-3"
               >
-                <i class="fi-mail"></i>
+                <i :class="item.iconClass"></i>
               </div>
-              <span class="d-block mb-1 text-body">ارسال ایمیل</span>
-              <h3 class="h5 icon-box-title mb-0 opacity-90">
-                example@email.com
-              </h3>
-            </div></a
-          >
-        </div>
-        <!-- Item-->
-        <div class="col-md-4">
-          <a class="icon-box card card-hover h-100" href="tel:4065550120">
-            <div class="card-body">
-              <div
-                class="icon-box-media text-primary rounded-circle shadow-sm mb-3"
-              >
-                <i class="fi-device-mobile"></i>
-              </div>
-              <span class="d-block mb-1 text-body"
-                >تماس در 7 روز هفته (24/7)</span
-              >
+              <span class="d-block mb-1 text-body">{{ item.title }}</span>
               <h3 class="h5 icon-box-title mb-0 opacity-90 ltr">
-                (021) 224-1523
+                {{ item.subtitle }}
               </h3>
-            </div></a
-          >
-        </div>
-        <!-- Item-->
-        <div class="col-md-4">
-          <a class="icon-box card card-hover h-100" href="#">
-            <div class="card-body">
-              <div
-                class="icon-box-media text-primary rounded-circle shadow-sm mb-3"
-              >
-                <i class="fi-instagram"></i>
-              </div>
-              <span class="d-block mb-1 text-body">ما را دنبال کنید</span>
-              <h3 class="h5 icon-box-title mb-0 opacity-90 ltr">
-                @finder_directory
-              </h3>
-            </div></a
-          >
+            </div>
+          </a>
         </div>
       </div>
     </section>
   </div>
 </template>
+<script>
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      formData: {
+        name: "",
+        email: "",
+        message: "",
+      },
+      items: [
+        {
+          title: "ارسال ایمیل",
+          subtitle: "example@email.com",
+          link: "mailto:example@email.com",
+          iconClass: "fi-mail",
+        },
+        {
+          title: "تماس در 7 روز هفته (24/7)",
+          subtitle: "(021) 224-1523",
+          link: "tel:4065550120",
+          iconClass: "fi-device-mobile",
+        },
+        {
+          title: "آدرس دفتر ما",
+          subtitle: "تهران خیابان هجرت",
+          link: "#",
+          iconClass: "fi-map-pin",
+        },
+      ],
+      postData: null,
+      email: "",
+      numberPhone: "",
+      address: "",
+    };
+  },
+
+  methods: {
+    fecthDetails() {
+      axios
+        .get("https://jsonplaceholder.typicode.com/posts/2")
+        .then((res) => {
+          console.log("fecthDetails", res.data);
+          // this.email = res.data;
+          // this.numberPhone = res.data;
+          // this.address = res.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    async submitForm() {
+      try {
+        const response = await axios.post(
+          "https://jsonplaceholder.typicode.com/posts",
+          this.formData
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+  mounted() {
+    this.fecthDetails();
+  },
+};
+</script>

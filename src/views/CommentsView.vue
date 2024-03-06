@@ -153,18 +153,24 @@
                   </label>
                   <select
                     class="form-select form-select-sm"
-                    id="review-sorting1"
+                    id="review-sorting2"
+                    v-model="selectedOption"
+                    @change="handleOptionChange"
                   >
-                    <option>جدیدترین</option>
-                    <option>قدیمی ترین</option>
-                    <option>موردپسند</option>
-                    <option>امتیاز بالا</option>
-                    <option>امتیاز پایین</option>
+                    <option value="newest">جدیدترین</option>
+                    <option value="oldest">قدیمی ترین</option>
+                    <option value="liked">مورد پسند</option>
+                    <option value="highRated">امتیاز بالا</option>
+                    <option value="lowRated">امتیاز پایین</option>
                   </select>
                 </div>
               </div>
               <!-- Review-->
-              <div class="mb-4 pb-4 border-bottom" v-for="item in comments" :key="item.id">
+              <div
+                class="mb-4 pb-4 border-bottom"
+                v-for="item in comments"
+                :key="item.id"
+              >
                 <div class="d-flex justify-content-between mb-3">
                   <div class="d-flex align-items-center ps-2">
                     <img
@@ -199,7 +205,7 @@
                   </button>
                 </div>
               </div>
-             
+
               <!-- Pagination-->
               <nav class="mt-2" aria-label="Reviews pagination">
                 <ul class="pagination">
@@ -237,7 +243,7 @@
               <div
                 class="d-flex flex-sm-row flex-column align-items-sm-center align-items-stretch justify-content-between pb-4 mb-2 mb-md-3"
               >
-                <h3 class="h4 mb-sm-0">3 نظر ثبت شده</h3>
+                <h3 class="h4 mb-sm-0">{{ myComments.length }} نظر ثبت شده</h3>
                 <div class="d-flex align-items-center ms-sm-4">
                   <label
                     class="fs-sm me-2 pe-1 text-nowrap"
@@ -248,22 +254,28 @@
                   <select
                     class="form-select form-select-sm"
                     id="review-sorting2"
+                    v-model="selectedOption"
+                    @change="handleOptionChange"
                   >
-                    <option>جدیدترین</option>
-                    <option>قدیمی ترین</option>
-                    <option>مورد پسند</option>
-                    <option>امتیاز بالا</option>
-                    <option>امتیاز پایین</option>
+                    <option value="newest">جدیدترین</option>
+                    <option value="oldest">قدیمی ترین</option>
+                    <option value="liked">مورد پسند</option>
+                    <option value="highRated">امتیاز بالا</option>
+                    <option value="lowRated">امتیاز پایین</option>
                   </select>
                 </div>
               </div>
               <!-- Review-->
-              <div class="mb-4 pb-4 border-bottom">
+              <div
+                class="mb-4 pb-4 border-bottom"
+                v-for="comment in myComments"
+                :key="comment.id"
+              >
                 <div class="d-flex justify-content-between mb-3">
                   <div class="ps-2">
                     <h6 class="mb-0">
-                      <span class="fw-normal text-muted me-1">برای: </span
-                      >آپارتمان 3 خواب
+                      <span class="fw-normal text-muted me-1">برای: </span>
+                      {{ comment.name }}
                     </h6>
                     <span class="star-rating"
                       ><i class="star-rating-icon fi-star-filled active"></i
@@ -273,86 +285,19 @@
                       ><i class="star-rating-icon fi-star"></i
                     ></span>
                   </div>
-                  <span class="text-muted fs-sm">12 بهمن , 1399</span>
+                  <span class="text-muted fs-sm">{{ comment.data }} </span>
                 </div>
                 <p>
-                  لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم
-                  استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر
-                  می گیرد. لورم ایپسوم استاندارد صنعت بوده است.
+                  {{ comment.dic }}
                 </p>
                 <div class="d-flex align-items-center">
                   <button class="btn-like" type="button">
-                    <i class="fi-like"></i><span>(2)</span>
+                    <i class="fi-like"></i><span>({{ comment.like }})</span>
                   </button>
                   <div class="border-end me-1">&nbsp;</div>
                   <button class="btn-dislike" type="button">
-                    <i class="fi-dislike"></i><span>(1)</span>
-                  </button>
-                </div>
-              </div>
-              <!-- Review-->
-              <div class="mb-4 pb-4 border-bottom">
-                <div class="d-flex justify-content-between mb-3">
-                  <div class="ps-2">
-                    <h6 class="mb-0">
-                      <span class="fw-normal text-muted me-1">برای: </span
-                      >آپارتمان های Terra Nova
-                    </h6>
-                    <span class="star-rating"
-                      ><i class="star-rating-icon fi-star-filled active"></i
-                      ><i class="star-rating-icon fi-star-filled active"></i
-                      ><i class="star-rating-icon fi-star-filled active"></i
-                      ><i class="star-rating-icon fi-star-half active"></i
-                      ><i class="star-rating-icon fi-star"></i
-                    ></span>
-                  </div>
-                  <span class="text-muted fs-sm">10 آذر, 1399</span>
-                </div>
-                <p>
-                  لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم
-                  استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر
-                  می گیرد.
-                </p>
-                <div class="d-flex align-items-center">
-                  <button class="btn-like" type="button">
-                    <i class="fi-like"></i><span>(4)</span>
-                  </button>
-                  <div class="border-end me-1">&nbsp;</div>
-                  <button class="btn-dislike" type="button">
-                    <i class="fi-dislike"></i><span>(2)</span>
-                  </button>
-                </div>
-              </div>
-              <!-- Review-->
-              <div class="mb-2">
-                <div class="d-flex justify-content-between mb-3">
-                  <div class="ps-2">
-                    <h6 class="mb-0">
-                      <span class="fw-normal text-muted me-1">برای: </span
-                      >اقامتگاه ویلایی
-                    </h6>
-                    <span class="star-rating"
-                      ><i class="star-rating-icon fi-star-filled active"></i
-                      ><i class="star-rating-icon fi-star-filled active"></i
-                      ><i class="star-rating-icon fi-star-filled active"></i
-                      ><i class="star-rating-icon fi-star-filled active"></i
-                      ><i class="star-rating-icon fi-star-filled active"></i
-                    ></span>
-                  </div>
-                  <span class="text-muted fs-sm">24 آبان , 1399</span>
-                </div>
-                <p>
-                  لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم
-                  استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر
-                  می گیرد. لورم ایپسوم استاندارد صنعت بوده است.
-                </p>
-                <div class="d-flex align-items-center">
-                  <button class="btn-like" type="button">
-                    <i class="fi-like"></i><span>(2)</span>
-                  </button>
-                  <div class="border-end me-1">&nbsp;</div>
-                  <button class="btn-dislike" type="button">
-                    <i class="fi-dislike"></i><span>(0)</span>
+                    <i class="fi-dislike"></i
+                    ><span>({{ comment.dislike }})</span>
                   </button>
                 </div>
               </div>
@@ -364,70 +309,127 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
- data(){
-   return{
-     comments : [
-       {
-         id : 1 ,
-         name : "میلاد فاضلیان",
-         imgSrc : "/avatars/04.jpg",
-         data : "14 خرداد , 1402",
-         dic : " لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسو استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.",
-         like : 5,
-         dislike : 3
-       },
-       {
-         id : 2 ,
-         name : "زهرا سیدی",
-         imgSrc : "/avatars/40.jpg",
-         data : "19 خرداد , 1403",
-         dic : " لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسو استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.",
-         like : 5,
-         dislike : 3
-       },
-       {
-         id : 3 ,
-         name : "میلاد رحیمی",
-         imgSrc : "/avatars/07.jpg",
-         data : "14 خرداد , 1401",
-         dic : " لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسو استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.",
-         like : 5,
-         dislike : 3
-       },
-       {
-         id : 4 ,
-         name : "مریم محمدی",
-         imgSrc : "/avatars/32.jpg",
-         data : "14 خرداد , 1402",
-         dic : " لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسو استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.",
-         like : 5,
-         dislike : 3
-       },
-       {
-         id : 5 ,
-         name : "میلاد احمدی",
-         imgSrc : "/avatars/09.jpg",
-         data : "14 خرداد , 1400",
-         dic : " لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسو استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.",
-         like : 5,
-         dislike : 3
-       }
-     ]
-   }
- },
- created() {
-   axios.get("https://jsonplaceholder.typicode.com/posts/1")
-   .then(res => {
-    console.log('در خواست نظرات کلی  ', res.data);
-   // this.comments = res.data
-   }) 
-   .catch(error => {
-    console.error('خطا در ارسال درخواست GET', error);
-   })
- }
-}
+  data() {
+    return {
+      comments: [
+        {
+          id: 1,
+          name: "میلاد فاضلیان",
+          imgSrc: "/avatars/04.jpg",
+          data: "14 خرداد , 1402",
+          dic: " لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسو استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.",
+          like: 5,
+          dislike: 3,
+        },
+        {
+          id: 2,
+          name: "زهرا سیدی",
+          imgSrc: "/avatars/40.jpg",
+          data: "19 خرداد , 1403",
+          dic: " لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسو استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.",
+          like: 5,
+          dislike: 3,
+        },
+        {
+          id: 3,
+          name: "میلاد رحیمی",
+          imgSrc: "/avatars/07.jpg",
+          data: "14 خرداد , 1401",
+          dic: " لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسو استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.",
+          like: 5,
+          dislike: 3,
+        },
+        {
+          id: 4,
+          name: "مریم محمدی",
+          imgSrc: "/avatars/32.jpg",
+          data: "14 خرداد , 1402",
+          dic: " لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسو استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.",
+          like: 5,
+          dislike: 3,
+        },
+        {
+          id: 5,
+          name: "میلاد احمدی",
+          imgSrc: "/avatars/09.jpg",
+          data: "14 خرداد , 1400",
+          dic: " لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسو استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.",
+          like: 5,
+          dislike: 3,
+        },
+      ],
+      myComments: [
+        {
+          id: 1,
+          name: "آپارتمان سه خواب",
+
+          data: "14 خرداد , 1402",
+          dic: " لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسو استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.",
+          like: 5,
+          dislike: 3,
+        },
+        {
+          id: 2,
+          name: "آپارتمان کیش",
+
+          data: "19 خرداد , 1403",
+          dic: " لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسو استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.",
+          like: 5,
+          dislike: 3,
+        },
+        {
+          id: 3,
+          name: "ویلا رامسر",
+
+          data: "14 خرداد , 1401",
+          dic: " لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسو استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.",
+          like: 5,
+          dislike: 3,
+        },
+      ],
+      selectedOption: 'newest',
+    };
+  },
+  created() {
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts/1")
+      .then((res) => {
+        console.log("در خواست نظرات کلی  ", res.data);
+        // this.comments = res.data
+      })
+      .catch((error) => {
+        console.error("خطا در ارسال درخواست GET", error);
+      });
+
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts/2")
+      .then((res) => {
+        console.log("در خواست نظرات خودم  ", res.data);
+        // this.myComments = res.data
+      })
+      .catch((error) => {
+        console.error("خطا در ارسال درخواست GET", error);
+      });
+  },
+  methods: {
+    async handleOptionChange() {
+      
+      try {
+        const response = await axios.post('https://jsonplaceholder.typicode.com/posts', {
+          sortingOption: this.selectedOption,
+        });
+
+
+        console.log(response.data);
+      } catch (error) {
+      
+        console.error(error);
+      }
+    },
+  },
+};
 </script>
 <style scoped></style>

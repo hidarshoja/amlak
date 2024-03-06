@@ -34,6 +34,7 @@
                 {
                     src : "/real-estate/about/hero/02.jpg",
                 }
+                
             ]
         }
     }

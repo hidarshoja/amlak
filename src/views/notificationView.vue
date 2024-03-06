@@ -160,7 +160,7 @@
                     class="form-check-input"
                     type="checkbox"
                     id="new-rental"
-                    checked
+                    v-model="isCheckboxChecked"
                   />
                   <label class="form-check-label" for="new-rental"></label>
                 </div>
@@ -300,23 +300,36 @@
             </div>
           </div>
           <div class="border-top pt-4">
-            <div class="form-check form-switch">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="all-notifications"
-                data-master-checkbox-for="#notification-settings"
-                checked
-              />
-              <label class="form-check-label" for="all-notifications"
-                >فعال / غیر فعال نوتیفیکیشن</label
-              >
-            </div>
+            <button class="btn btn-primary btn-lg w-100 mb-3" @click="sendChanges">اعمال تغییرات</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-<script></script>
+<script>
+import axios from 'axios';
+   export default {
+  data() {
+    return {
+      isCheckboxChecked: false, // Set the default value to false
+    };
+  },
+  methods: {
+    async sendChanges() {
+      try {
+        const response = await axios.post('https://jsonplaceholder.typicode.com/posts', {
+          newAdd: this.isCheckboxChecked,
+        });
+
+        
+        console.log(response.data);
+      } catch (error) {
+        
+        console.error(error);
+      }
+    },
+  },
+};
+</script>
 <style scoped></style>

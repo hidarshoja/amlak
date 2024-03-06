@@ -19,6 +19,11 @@ const router = createRouter({
           component: () => import('../views/AboutView.vue')
         },
         {
+          path: '/properitins',
+          name: 'properitins',
+          component: () => import('../views/properitins.vue')
+        },
+        {
           path: '/rent',
           name: 'rent',
           component: () => import('../views/RentView.vue')
@@ -57,6 +62,11 @@ const router = createRouter({
           path: '/comments',
           name: 'comments',
           component: () => import('../views/CommentsView.vue'),
+        }, 
+        {
+          path: '/commentsUser',
+          name: 'commentsUser',
+          component: () => import('../views/commentUserView.vue'),
         },
         {
           path: '/notification',
@@ -103,6 +113,7 @@ const router = createRouter({
           name: 'edit',
           component: () => import('../views/EditView.vue')
         },
+       
       ]
     },
     {
@@ -114,6 +125,24 @@ const router = createRouter({
       },{
         path:'register',
         component: () => import('../views/RegisterView.vue')
+      },
+    ]
+    },
+    {
+      path: '/realstate',
+      // component: () => import('../layouts/Authlayot.vue'),
+      children: [
+        {
+        path:'profileUsers',
+        component: () => import('../profileProperty/ProfileUsersView.vue')
+      },
+      {
+        path:'adminPassword',
+        component: () => import('../profileProperty/AdminPassword.vue')
+      },
+      {
+        path:'myHome',
+        component: () => import('../profileProperty/MyHomeView.vue')
       },
     ]
     }

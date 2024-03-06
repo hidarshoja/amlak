@@ -62,8 +62,8 @@
             </div>
             <a
               class="btn btn-primary btn-lg w-100 mb-3"
-              href="/record"
-              ><i class="fi-plus me-2"></i> ثبت ملک</a
+              href="/realstate/profileUsers"
+              ><i class="fi-plus me-2"></i>در خواست همکاری</a
             ><a
               class="btn btn-outline-secondary d-block d-md-none w-100 mb-3"
               href="#account-nav"
@@ -107,20 +107,12 @@
         </aside>
         <!-- Content-->
         <div class="col-lg-8 col-md-7 mb-5 account">
-          <h1 class="h2">اطلاعات حساب کاربری</h1>
-          <div class="mb-2 pt-1">
-            50% از اطلاعات حساب کاربری شما تکمیل شده است.
+          <div>
+            <h1 class="h2">اطلاعات حساب کاربری</h1>
+        
           </div>
-          <div class="progress mb-4" style="height: 0.25rem">
-            <div
-              class="progress-bar bg-warning"
-              role="progressbar"
-              style="width: 50%"
-              aria-valuenow="50"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
+          
+       
           <label class="form-label pt-2" for="account-bio">توضیح مختصر</label>
           <div class="row pb-2">
             <div class="col-lg-9 col-sm-8 mb-4">
@@ -158,6 +150,7 @@
               </div>
             </div>
           </div>
+        
           <div class="border rounded-3 p-3 mb-4" id="personal-info">
             <!-- Name-->
             <div class="border-bottom pb-3 mb-3">

@@ -463,7 +463,7 @@ export default {
       items: [
         {
           type: "اجاره",
-          link: "real-estate-single-v1.html",
+          link: "/detailsView",
           status1: "تایید",
           status2: "جدید",
           images: [
@@ -480,7 +480,7 @@ export default {
         },
         {
           type: "اجاره",
-          link: "real-estate-single-v1.html",
+          link: "/detailsView",
           status1: "تایید",
           status2: "جدید",
           images: [
@@ -497,7 +497,7 @@ export default {
         },
         {
           type: "اجاره",
-          link: "real-estate-single-v1.html",
+          link: "/detailsView",
           status1: "تایید",
           status2: "جدید",
           images: [
